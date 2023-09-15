@@ -1,0 +1,15 @@
+{%extends 'index.html'%}
+{% block content %}
+<main class="main">
+    <h1>Usuarios</h1>
+    {% for dicionario in lista %}
+    <div class="usuarios" >
+    <h5>nome: {{ dicionario["nome"]}}</h5>
+    <p>email: {{ dicionario["email"]}}</p>
+    <p>senha: {{ dicionario["senha"]}}</p>
+    </div>
+    <br>
+    {%endfor%}
+    <br><br>
+</main>
+{% endblock %}

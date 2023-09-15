@@ -1,0 +1,21 @@
+criação do app
+1. criar pasta chamada "app"
+2. criar arquivo "main" dentro da pasta CRO, mas fora do "app", este arquivo sempre tem o mesmo código
+3. criar dentro da pasta "app" as pastas, controllers, 
+    model, static, templates, e o aquivo "__init__.py"
+4. dentro da pasta "controllers" tem:
+   - o arquivo "routes.py" que vai conter todas as rotas e métodos
+    para melhorar a organização é criado um controller para cada classe 
+    e importa ele para dentro do routes. ex: "UsuariosController.py"
+5. dentro da pasta "model":
+   - o nome do arquivo deve ser com a 1° letra maiúscula
+   - armazena as classes e os métodos das mesmas. ex: "Class_Usuario"
+6. dentro da pasta "static":
+   - criar a pasta "css", que vai conter todos os códigos para estilização
+   - criar a pasta "img", que vai conter todas as imagens e utiliza a mesma rota 
+     para todos os lugares que utilizar aquela imagem
+   - criar a pasta "js", que vai conter os códigos para interação do usuário
+7. dentro da pasta "templates":
+   - vai conter todos os arquivos html ou jinja
+8. dentro do arquivo "__init__":
+   - faz a conexão com o BD e configura o endereço do BD
