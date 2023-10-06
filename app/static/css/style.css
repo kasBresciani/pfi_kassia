@@ -11255,6 +11255,14 @@ blockquote {
     color: #6c757d;
 }
 
+.botao-claro {
+    text-decoration: var(--cor-azul-escuro);
+    margin-top: 5%;
+    width: 100%;
+    height: auto;
+}
+
+
 #mainNav {
     position: absolute;
     top: 0;
