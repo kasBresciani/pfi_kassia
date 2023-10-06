@@ -6,15 +6,20 @@ from app.model.Usuario import Usuario
 
 @app.route("/usuarios/create", methods=["POST"]) 
 def create():
-    
+
     usuario = {
         "nome":request.form["nome"],
         "email":request.form["email"],
         "senha":request.form["senha"],
+        "confsenha":request.form["confirmasenha"],
     }
     #usa as infos fornecidas no forms e coloca elas dentro de um dicionário
     
-    user = Usuario( usuario["nome"], usuario["email"], usuario["senha"])
+    if usuario["senha"] == usuario["confsenha"]:
+
+        user = Usuario( usuario["nome"], usuario["email"], usuario["senha"])
+    else:
+        return render_template("home.html")
     # instacia a classe usuário usando como paramêtro as infos fornecidas do dicionário 
 
     db.session.add(user) # aqui ele pega a classe "usuario" e faz um "insert" no BD
