@@ -1,5 +1,4 @@
-from flask import request, redirect, render_template
-from flask import request, render_template
+from flask import request, redirect, render_template, session
 from app import app, db
 
 from app.model.Usuario import Usuario 
@@ -16,14 +15,14 @@ def create():
     #usa as infos fornecidas no forms e coloca elas dentro de um dicionário
     
     if usuario["senha"] == usuario["confsenha"]:
-
-        user = Usuario( usuario["nome"], usuario["email"], usuario["senha"])
+        user = Usuario(usuario["nome"], usuario["email"], usuario["senha"])
     else:
         return render_template("home.html")
     # instacia a classe usuário usando como paramêtro as infos fornecidas do dicionário 
 
-    db.session.add(user) # aqui ele pega a classe "usuario" e faz um "insert" no BD
-    db.session.commit() # ele inicializa o comando escrito anteriormente
+    
+    #db.session.add(user) # aqui ele pega a classe "usuario" e faz um "insert" no BD
+    #db.session.commit() # ele inicializa o comando escrito anteriormente
         
     session["nome"] = user.toJson()["nome"]
     session["email"] = user.toJson()["email"]
@@ -31,7 +30,7 @@ def create():
     # o render_template irá renderizar o template com base no arquivo que foi add e 
     # por isso não é feito com rota e sim com o endereço do arquivo
 
-@app.route("/usuarios/read")
+@app.route("/usuarios/read" )
 def read():
     user = Usuario.query.all() # "busque todos dentro da tabela ususários"
     lista = []
@@ -41,6 +40,6 @@ def read():
         
     print(lista)    
 
-    return render_template("mostrarUsuario.html", lista = lista )
+    return render_template("mostrarusuario.html", lista = lista )
 
 
