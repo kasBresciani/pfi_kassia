@@ -1,7 +1,8 @@
 from app import app
-from flask import render_template
+from flask import render_template, request
 
-@app.route('/') # o nome da rota pode ser qualquer um
+
+@app.route('/')
 def home():
     return render_template("index.html")
 
@@ -9,7 +10,16 @@ def home():
 def cadastro():
     return render_template("cadastro.html")
 
-from app.controllers import UsuarioControler
+@app.route('/login')
+def login():
+    return render_template("login.html")
+
+@app.route('/perfil/<id>')
+def perfil(id):
+    user = usr.get_user(id)
+    return render_template("perfil.html", user = user)
+
+from app.controllers import UsuarioControler as usr
 
 # o texto deste arquivo poderia estar dentro "app.controllers" 
 # mas por uma questão de organização é melhor manter separado

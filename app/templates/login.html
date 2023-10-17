@@ -1,0 +1,13 @@
+{%extends 'index.html'%}
+{% block content %}
+<main class="login">
+    <form action="/usuarios/auth" method="POST">
+        <h4> Login de usuario </h4>
+        <input type="text" placeholder="Email" id="email" name="email" class="campos-texto">
+        <input type="text" placeholder="Senha" id="senha" name="senha" class="campos-texto">
+        <button type="submit" class="botao-claro"> Entrar </button>
+        <a href="/cadastro">Criar conta</a>
+    </form>
+    
+</main>
+{% endblock %}
