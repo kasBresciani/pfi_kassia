@@ -31,7 +31,7 @@ body {
     background-color: var(--cor-azul-escuro);
     height: 100px;
     width: 100%;
-    padding: 30px;
+    padding: 20px;
 }
 
 .main {
@@ -43,7 +43,7 @@ body {
 
 input,
 button {
-    background-color: var(--cor-azul-mais-claro);
+    background-color: var(--cor-azul-escuro);
     border: 1px solid white;
     width: 15%;
     height: 15%;
@@ -6957,7 +6957,10 @@ fieldset:disabled .btn {
     min-height: 1em;
     vertical-align: middle;
     cursor: wait;
-    background-color: currentcolor;
+    position: fixed;
+    width: 15%;
+    height: 15%;
+    background-color: var(--cor-azul-escuro);
     opacity: 0.5;
 }
 
@@ -11262,7 +11265,6 @@ blockquote {
     height: auto;
 }
 
-
 #mainNav {
     position: absolute;
     top: 0;
@@ -11350,8 +11352,9 @@ blockquote {
 }
 
 footer {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    position: fixed;
+    padding-top: 100px;
+    padding-bottom: 100px;
 }
 
 header.masthead {

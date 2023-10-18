@@ -1,21 +1,19 @@
 .cadastro {
-	display: flex;
-	background-color: var(--cor-azul-escuro);
-	justify-content: center;
-	flex-direction: column;
+    display: flex;
+    background-color: var(--cor-azul-escuro);
+    justify-content: center;
+    flex-direction: column;
 }
 
 .cadastro form {
-	flex-grow: 1;
-	margin-left: 20%;
-	margin-right: 20%;
+    flex-grow: 1;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 .campos-texto {
-    background-color: var(--cor-azul-mais-claro);
+    background-color: var(--cor-fundo-placeholder);
     text-decoration-color: var(--cor-azul-escuro);
     width: 100%;
     height: auto;
 }
-
-

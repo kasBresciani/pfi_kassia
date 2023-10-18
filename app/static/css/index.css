@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200&display=swap');
-
-:root{
+:root {
     --fonte-geral: 'Roboto Slab', serif;
-
     --cor-azul-escuro: #00507A;
     --cor-azul-medio: #0077b6;
     --cor-azul-claro: #70CDFF;
     --cor-azul-mais-claro: #5CC6FF;
-
+    --cor-fundo-placeholder: #82afc7a1;
     --font-grande: 1.5rem;
     --font-media: 1rem;
     ---font-normal: .938rem;
-};
+}
+
+;
