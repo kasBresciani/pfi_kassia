@@ -3,6 +3,16 @@ from app import app, db
 
 from app.model.Usuario import Usuario 
 
+
+def get_user():
+    user = Usuario.query.all()
+    list_of_users = []
+
+    for i in user:
+        list_of_users.append(i.toJson())
+
+    return list_of_users
+
 @app.route("/usuarios/create", methods=["POST"]) 
 def create():
 
@@ -21,9 +31,9 @@ def create():
     # instacia a classe usuário usando como paramêtro as infos fornecidas do dicionário 
 
     
-    #db.session.add(user) # aqui ele pega a classe "usuario" e faz um "insert" no BD
-    #db.session.commit() # ele inicializa o comando escrito anteriormente
-    session["id"] = user.toJson()["id"]    
+    db.session.add(user) # aqui ele pega a classe "usuario" e faz um "insert" no BD
+    db.session.commit() # ele inicializa o comando escrito anteriormente
+  
     session["nome"] = user.toJson()["nome"]
     session["email"] = user.toJson()["email"]
     session["logged_in"] = True
@@ -33,23 +43,27 @@ def create():
 
 @app.route("/usuarios/auth", methods=["POST"])
 def auth():
-    usr = {
+    usr_data = {
         "email":request.form["email"],
         "senha":request.form["senha"]
     }
 
-    user = Usuario.query.filter_by(email=usr["email"], senha = usr["senha"])
-    if user.count() != 0:
-        #print(user)
-        for usuario in user:
-            session["id"] = usuario.toJson()["id"]    
-            session["nome"] = usuario.toJson()["nome"]
-            session["email"] = usuario.toJson()["email"]
+    users = get_user()
+   
+    email = usr_data["email"]
+    senha = usr_data["senha"]
+
+    #return render_template("mostrarusuario.html", lista = users)
+    if len(users) > 0:
+        for user in users:
+            if user["email"] == email and user["senha"] == senha:
+                session["nome"] = user["nome"]
+                session["email"] = user["email"]
         session["logged_in"] = True
 
         return redirect(url_for("home"))
     else:
-         return redirect(url_for("login"))
+        return redirect(url_for("login"))
 
 @app.route("/usuarios/validacao")
 def validation():
@@ -57,18 +71,13 @@ def validation():
     if session.get("logged_in") == False:
         return redirect(url_for("login"))
     else:
-        id = session.get("id")
+        
         
         return redirect(url_for("perfil", id=id))
 
-def get_user(id):
-    user = Usuario.query.filter_by(id = id)
-    print(user)
-
-    return user
 @app.route("/usuarios/sair")
 def user_logout():
-    session["id"] = ''
+    
     session["nome"] = ''
     session["email"] = ''
     session["logged_in"] = False  
