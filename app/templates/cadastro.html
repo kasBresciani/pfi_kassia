@@ -1,5 +1,4 @@
-{%extends 'index.html'%}
-{% block content %}
+{%extends 'index.html'%} {% block content %}
 <main class="cadastro">
     <form action="/usuarios/create" method="POST">
         <h4> Cadastro de usuario </h4>
@@ -8,6 +7,18 @@
         <input type="text" placeholder="Senha" id="senha" name="senha" class="campos-texto">
         <input type="text" placeholder="Confirmar senha" id="confirmasenha" name="confirmasenha" class="campos-texto">
         <button type="submit" class="botao-claro"> Cadastrar </button>
-    </form>
-</main>
-{% endblock %}
+        <main class="main">
+            <form action="/usuarios/create" method="POST">
+                <h4> Cadastro de Usuário </h4>
+                <input type="text" placeholder="Nome" id="nome" name="nome">
+                <input type="text" placeholder="Email" id="email" name="email">
+                <input type="date" placeholder="Data de Nascimento" id="DT_Nasc" name="DT_Nasc">
+                <input type="text" placeholder="Senha" id="senha" name="senha">
+                <input type="text" placeholder="Confirme sua senha" id="Conf_senha" name="Conf_senha">
+                <button type="submit"> Ir para tela inicial </button>
+                <button type="submit"> Fazer login </button>
+            </form>
+        </main>
+        {% endblock %}
+        <!-- depois que o usuário tiver se cadastrado o local escrito "cadastro" encima deve sumir e dar lugar a uma barr-->
+        <!--a de pesquisa com filtro-->

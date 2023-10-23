@@ -17,6 +17,22 @@ def forum():
 # def home():
 #     return render_template("home.html")
 
+@app.route('/login')
+def login():
+    return render_template("login.html")
+
+@app.route('/recup_senha')
+def recup_senha():
+    return render_template("recup_senha.html")
+
+@app.route('/hist_cdc')
+def hist_cdc():
+    return render_template("historia_cdc.html")
+
+@app.route('/home')
+def pag_inicial():
+    return render_template("home.html")
+
 from app.controllers import UsuarioControler
 
 # o texto deste arquivo poderia estar dentro "app.controllers" 
