@@ -1,7 +1,17 @@
-from flask import request, redirect, render_template, session
+from flask import request, redirect, render_template, session, url_for
 from app import app, db
 
 from app.model.Usuario import Usuario 
+
+
+def get_user():
+    user = Usuario.query.all()
+    list_of_users = []
+
+    for i in user:
+        list_of_users.append(i.toJson())
+
+    return list_of_users
 
 @app.route("/usuarios/create", methods=["POST"]) 
 def create():
@@ -45,9 +55,15 @@ def read():
     for i in user:
         lista.append(i.toJson()) # Transforme o objeto retornado em uma condição {chave : valor} que pode ser lida pelo backend
         
-    print(lista)    
+        
+        return redirect(url_for("perfil", id=id))
 
-    return render_template("mostrarusuario.html", lista = lista )
+@app.route("/usuarios/sair")
+def user_logout():
+    
+    session["nome"] = ''
+    session["email"] = ''
+    session["logged_in"] = False  
 
 # @app.route("/usuarios/rec_senha")
 # def read():

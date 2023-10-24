@@ -1,7 +1,8 @@
 from app import app
-from flask import render_template
+from flask import render_template, request, session
 
-@app.route('/') # o nome da rota pode ser qualquer um
+
+@app.route('/')
 def home():
     return render_template("home.html")
 
