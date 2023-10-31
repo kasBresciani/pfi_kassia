@@ -34,6 +34,10 @@ def hist_cdc():
 def pag_inicial():
     return render_template("home.html")
 
+@app.route('/perfil')
+def perfil():
+    return render_template("perfil.html")
+
 from app.controllers import UsuarioControler
 
 # o texto deste arquivo poderia estar dentro "app.controllers" 
